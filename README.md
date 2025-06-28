@@ -22,5 +22,3 @@ Notas adicionales:
 - No subir la carpeta `node_modules` ni archivos `.env` al repositorio.
 - Se recomienda usar Java 17 para máxima compatibilidad con Spring Boot.
 - Antes del despliegue, ejecutar `npm audit fix` para reducir vulnerabilidades.
-- En producción, se puede servir el build de React desde Spring Boot copiando la carpeta `/build` a `/backend/src/main/resources/static`.
-

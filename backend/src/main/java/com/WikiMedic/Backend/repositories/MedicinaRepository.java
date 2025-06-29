@@ -12,7 +12,7 @@ public interface MedicinaRepository extends JpaRepository<medicinaModel, Integer
     List<medicinaModel> findByNombreContainingIgnoreCase(String nombre);
 
     // Buscar medicinas que tengan TODOS los síntomas seleccionados
-    @Query("SELECT m FROM Medicina m JOIN m.sintomas s WHERE s IN :sintomas GROUP BY m HAVING COUNT(s) = :#{#sintomas.size}")
+    @Query("SELECT m FROM medicinaModel m JOIN m.sintomas s WHERE s IN :sintomas GROUP BY m HAVING COUNT(s) = :#{#sintomas.size}")
     List<medicinaModel> findBySintomasAll(List<sintomaModel> sintomas);
 
     // Buscar medicinas que tengan AL MENOS UNO de los síntomas seleccionados

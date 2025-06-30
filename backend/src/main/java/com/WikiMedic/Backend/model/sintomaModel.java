@@ -2,6 +2,7 @@ package com.WikiMedic.Backend.model;
 
 import jakarta.persistence.*;
 import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "sintomas")
@@ -19,6 +20,7 @@ public class sintomaModel {
     private String descripcion;
 
     @ManyToMany(mappedBy = "sintomas")
+    @JsonIgnore
     private Set<medicinaModel> medicinas;
 
     // Getters y Setters

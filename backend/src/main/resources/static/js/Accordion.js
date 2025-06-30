@@ -26,9 +26,10 @@ function renderizarTarjetasMedicinas(medicinas) {
     medicinas.forEach(medicina => {
         const card = document.createElement('div');
         card.className = 'farmaco-card';
+        card.onclick = () => window.location.href = `/farmaco/${medicina.id}`;
         card.innerHTML = `
             <div class="nombre">${medicina.nombre}</div>
-            <div class="desc">${medicina.descripcion ?? ''}</div>
+            <div class="desc">${medicina.descripcion ?? 'Sin descripción.'}</div>
         `;
         contenedor.appendChild(card);
     });

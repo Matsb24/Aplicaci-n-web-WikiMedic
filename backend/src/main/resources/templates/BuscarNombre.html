@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscador de Medicinas por Nombre</title>
+    <link rel="stylesheet" href="/css/BuscarNombre.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
+</head>
+<body>
+    <div class="nav">
+        <a href="/inicio" class="nav-home">Inicio</a>
+        <div class="nav-center">
+            <a href="#" class="nav-link active">Buscador</a>
+            <img src="/img/logo.png" alt="Logo" class="nav-logo">
+            <a href="/buscar-afecciones" class="nav-link">Síntomas</a>
+        </div>
+    </div>
+    <div class="main-content">
+        <!-- Buscador por nombre -->
+        <div class="search-container">
+            <input type="text" id="medicina-search" placeholder="Buscar medicina por nombre..." autocomplete="off">
+            <div id="suggestions" class="suggestions-list"></div>
+        </div>
+        <!-- Zona de resultados de fármacos -->
+        <div class="farmacos-zone">
+            <div class="farmacos-header">BÚSQUEDAS ENCONTRADAS</div>
+            <div class="farmacos-cards" id="farmacos-cards">
+                <div id="mensaje-inicial">Coloque el nombre del medicamento</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('medicina-search');
+            const suggestionsBox = document.getElementById('suggestions');
+            const cards = document.getElementById('farmacos-cards');
+
+            function limpiarResultados() {
+                cards.innerHTML = '<div id="mensaje-inicial" style="text-align:center;color:#888;">Coloque el nombre del medicamento</div>';
+            }
+
+            let timeout = null;
+
+            searchInput.addEventListener('input', function () {
+                const query = searchInput.value.trim();
+                clearTimeout(timeout);
+
+                if (query.length === 0) {
+                    suggestionsBox.style.display = 'none';
+                    suggestionsBox.innerHTML = '';
+                    limpiarResultados();
+                    return;
+                }
+
+                timeout = setTimeout(() => {
+                    fetch(`/api/medicinas/buscar?nombre=${encodeURIComponent(query)}`)
+                        .then(res => res.json())
+                        .then(data => {
+                            suggestionsBox.innerHTML = '';
+                            if (data.length === 0) {
+                                suggestionsBox.style.display = 'none';
+                                cards.innerHTML = '<div style="text-align:center;color:#888;">0 resultados</div>';
+                                return;
+                            }
+                            data.forEach(medicina => {
+                                const item = document.createElement('div');
+                                item.className = 'suggestion-item';
+                                item.textContent = medicina.nombre;
+                                item.addEventListener('click', () => {
+                                    searchInput.value = medicina.nombre;
+                                    suggestionsBox.style.display = 'none';
+                                    mostrarDetallesMedicina(medicina);
+                                });
+                                suggestionsBox.appendChild(item);
+                            });
+                            suggestionsBox.style.display = 'block';
+                        });
+                }, 300);
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!searchInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+                    suggestionsBox.style.display = 'none';
+                }
+            });
+
+            function mostrarDetallesMedicina(medicina) {
+                cards.innerHTML = '';
+                const card = document.createElement('div');
+                card.className = 'farmaco-card';
+                card.onclick = () => window.location.href = `/farmaco/${medicina.id}`;
+                card.innerHTML = `
+                    <h3>${medicina.nombre}</h3>
+                    <p>${medicina.descripcion ? medicina.descripcion : ''}</p>
+                `;
+                cards.appendChild(card);
+            }
+
+            limpiarResultados();
+        });
+    </script>
+</body>
+</html>

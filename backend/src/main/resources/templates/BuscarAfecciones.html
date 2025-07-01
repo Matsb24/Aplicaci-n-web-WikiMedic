@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscador de Afecciones y Fármacos</title>
+    <link rel="stylesheet" href="/css/BuscarAfecciones.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
+</head>
+<body>
+    <div class="nav">
+  <a href="/inicio" class="nav-home">Inicio</a>
+  <div class="nav-center">
+    <a href="/buscar-medicinas" class="nav-link">Buscador</a>
+    <img src="/img/logo.png" alt="Logo" class="nav-logo">
+    <a href="#" class="nav-link active">Síntomas</a>
+  </div>
+</div>
+    <div class="main-content">
+        <!-- Sidebar: Acordeón de categorías -->
+        <div class="sidebar">
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-title" type="button" onclick="toggleAccordion(this)">Dolor</button>
+                    <div class="accordion-content">
+                        <div class="checkbox-list">
+                            <label><input type="checkbox" class="sintoma-checkbox" value="1"> Fiebre</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="2"> Dolor muscular</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="3"> Dolor de estómago</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-title" type="button" onclick="toggleAccordion(this)">Infecciones</button>
+                    <div class="accordion-content">
+                        <div class="checkbox-list">
+                            <label><input type="checkbox" class="sintoma-checkbox" value="4"> Gripe</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="5"> Ojos rojos</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Agrega más categorías y síntomas fácilmente -->
+            </div>
+        </div>
+        
+        <!-- Zona de resultados de fármacos -->
+        <div class="farmacos-zone">
+            <div class="farmacos-header">BÚSQUEDAS ENCONTRADAS</div>
+            <div class="farmacos-cards">
+                
+                <div class="farmacos-cards" id="farmacos-cards"></div>
+
+                
+            </div>
+        </div>
+    </div>
+    <script src="/js/Accordion.js"></script>
+    <script src="/js/Tarjetas.js"></script>
+</body>
+</html>

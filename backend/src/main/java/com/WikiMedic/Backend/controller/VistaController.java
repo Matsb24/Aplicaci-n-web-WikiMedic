@@ -13,4 +13,10 @@ public class VistaController {
         return "BuscarAfecciones"; //colocar nombre del html, sin html. ejemplo BuscarAfecciones.html -> BuscarAfecciones
     }
 
+     //moverse a buscar medicamentos por nombre
+    @GetMapping("/buscar-medicinas")
+    public String buscarMedicinas() {
+        return "BuscarNombre"; //colocar nombre del html, sin html. ejemplo BuscarMedicinas.html -> BuscarMedicinas
+    }
+
 }

@@ -19,26 +19,105 @@
         <!-- Sidebar: Acordeón de categorías -->
         <div class="sidebar">
             <div class="accordion">
+                <!-- DOLOR -->
                 <div class="accordion-item">
                     <button class="accordion-title" type="button" onclick="toggleAccordion(this)">Dolor</button>
                     <div class="accordion-content">
                         <div class="checkbox-list">
-                            <label><input type="checkbox" class="sintoma-checkbox" value="1"> Fiebre</label>
-                            <label><input type="checkbox" class="sintoma-checkbox" value="2"> Dolor muscular</label>
-                            <label><input type="checkbox" class="sintoma-checkbox" value="3"> Dolor de estómago</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="1"> Dolor de cabeza</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="4"> Dolor muscular</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="7"> Dolor de garganta</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="19"> Dolor abdominal</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="42"> Dolor en el pecho</label>
                         </div>
                     </div>
                 </div>
+
+                <!-- INFECCIONES -->
                 <div class="accordion-item">
                     <button class="accordion-title" type="button" onclick="toggleAccordion(this)">Infecciones</button>
                     <div class="accordion-content">
                         <div class="checkbox-list">
-                            <label><input type="checkbox" class="sintoma-checkbox" value="4"> Gripe</label>
-                            <label><input type="checkbox" class="sintoma-checkbox" value="5"> Ojos rojos</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="11"> Infección cutánea</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="12"> Diarrea</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="14"> Irritación o enrojecimiento</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="22"> Inflamación</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="40"> Inflamación ocular</label>
                         </div>
                     </div>
                 </div>
-                <!-- Agrega más categorías y síntomas fácilmente -->
+
+                <!-- ALERGIAS -->
+                <div class="accordion-item">
+                    <button class="accordion-title" type="button" onclick="toggleAccordion(this)">Alergias</button>
+                    <div class="accordion-content">
+                        <div class="checkbox-list">
+                            <label><input type="checkbox" class="sintoma-checkbox" value="6"> Congestión nasal</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="9"> Estornudos</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="14"> Picazón en la piel</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="32"> Picazón ocular</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="33"> Urticaria</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SISTEMA DIGESTIVO -->
+                <div class="accordion-item">
+                    <button class="accordion-title" type="button" onclick="toggleAccordion(this)">Sistema Digestivo</button>
+                    <div class="accordion-content">
+                        <div class="checkbox-list">
+                            <label><input type="checkbox" class="sintoma-checkbox" value="3"> Náuseas</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="12"> Diarrea</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="13"> Reflujo gástrico</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="20"> Acidez estomacal</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="28"> Dolor abdominal</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="41"> Vómitos</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SISTEMA RESPIRATORIO -->
+                <div class="accordion-item">
+                    <button class="accordion-title" type="button" onclick="toggleAccordion(this)">Sistema Respiratorio</button>
+                    <div class="accordion-content">
+                        <div class="checkbox-list">
+                            <label><input type="checkbox" class="sintoma-checkbox" value="2"> Fiebre</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="5"> Tos</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="26"> Dificultad para respirar</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="29"> Presión en el pecho</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="43"> Sensación de cuerpo cortado</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SISTEMA NERVIOSO / GENERAL -->
+                <div class="accordion-item">
+                    <button class="accordion-title" type="button" onclick="toggleAccordion(this)">Nervioso / General</button>
+                    <div class="accordion-content">
+                        <div class="checkbox-list">
+                            <label><input type="checkbox" class="sintoma-checkbox" value="8"> Mareos</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="16"> Fatiga</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="17"> Ansiedad</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="30"> Temblores</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="44"> Sensación de opresión emocional</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OTROS -->
+                <div class="accordion-item">
+                    <button class="accordion-title" type="button" onclick="toggleAccordion(this)">Otros</button>
+                    <div class="accordion-content">
+                        <div class="checkbox-list">
+                            <label><input type="checkbox" class="sintoma-checkbox" value="10"> Falta de apetito</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="15"> Sudoración excesiva</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="23"> Lengua blanca</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="24"> Erupciones cutáneas</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="31"> Dificultad para concentrarse</label>
+                            <label><input type="checkbox" class="sintoma-checkbox" value="45"> Sangrado nasal</label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         

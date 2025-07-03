@@ -24,9 +24,11 @@ body {
     border-radius: 8px;
     transition: background 0.2s;
 }
+
 .nav-home:hover {
     background: #e1f4fd;
 }
+
 .nav-center {
     display: flex;
     align-items: center;
@@ -57,28 +59,43 @@ body {
 
 .main-content {
     display: flex;
-    gap: 40px;
+    flex-direction: column;
+    gap: 20px;
     max-width: 1000px;
     margin: 40px auto;
+    padding: 0 20px;
 }
 
 .search-container {
-    flex: 0 0 350px;
     position: relative;
+    width: 60%; /* Reduced width */
+    margin: 0 auto 20px auto; /* Centered horizontally */
+    text-align: center; /* Center the label */
 }
 
 #medicina-search {
     width: 100%;
-    padding: 12px 16px;
+    padding: 12px 16px 12px 40px; /* Left padding for icon */
     font-size: 1.1em;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: 1px solid #0ab6fb;
+    border-radius: 25px; /* More rounded corners */
     box-sizing: border-box;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 16px center;
+    background-size: 16px;
+    transition: all 0.3s ease;
+}
+
+#medicina-search:focus {
+    outline: none;
+    border-color: #0ab6fb;
+    box-shadow: 0 0 0 2px rgba(10, 182, 251, 0.2);
 }
 
 .suggestions-list {
     position: absolute;
-    top: 37%;
+    top: 100%;
     left: 0;
     right: 0;
     background: #fff;
@@ -103,48 +120,61 @@ body {
 }
 
 .farmacos-zone {
-    flex: 1;
+    width: 100%;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    padding: 30px 24px;
-}
-
-.farmacos-header {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    padding: 20px;
     text-align: center;
 }
 
 .farmacos-cards {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 12px;
 }
-
+.farmacos-header {
+    font-size: 1.5em;
+    color: #0ab6fb; 
+}
 .farmaco-card {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 16px;
-    padding: 18px;
+    background: #e6e3e36e;
+    border-radius: 8px;
+    padding: 16px;
     box-shadow: 0 2px 12px 0 rgba(0,0,0,0.06);
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
     transition: box-shadow 0.2s, transform 0.2s;
 }
-
-.farmaco-card:hover {
-    box-shadow: 0 6px 24px 0 rgba(0,180,255,0.15);
-    transform: translateY(-3px);
+.farmaco-card:hover{
+   box-shadow: 0 6px 24px 0 rgba(0,180,255,0.15);
+   transform: translateY(-5px);
 }
 
-.nombre {
+.farmaco-card h3 {
+    margin: 0 0 8px 0;
     font-size: 1.2em;
+    color: #0ab6fb;
+}
+
+.farmaco-card p {
+    margin: 0;
+    color: #555;
+    font-size: 0.95em;
+}
+
+/* New styles to match the image */
+.search-container::before {
+    content: "BUSCADOR DE MEDICINA";
+    display: block;
     font-weight: bold;
     margin-bottom: 8px;
+    margin-top: 70px;
+    font-size: 1.8rem;
+    color: #0ab6fb;
 }
 
-.desc {
-    font-size: 1em;
-    color: #555;
-}
+
+

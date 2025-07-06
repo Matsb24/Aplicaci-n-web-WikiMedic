@@ -5,12 +5,13 @@
     <title>Buscador de Afecciones y Fármacos</title>
     <link rel="stylesheet" href="/css/BuscarAfecciones.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
+    <link rel="icon" href="/img/logo.png" type="image/x-icon">
 </head>
 <body>
     <div class="nav">
-  <a href="/inicio" class="nav-home">Inicio</a>
+  <a href="/" class="nav-home">Inicio</a>
   <div class="nav-center">
-    <a href="/buscar-medicinas" class="nav-link">Buscador</a>
+    <a href="/buscar-medicinas" class="nav-link">Busca Tu Pastilla </a>
     <img src="/img/logo.png" alt="Logo" class="nav-logo">
     <a href="#" class="nav-link active">Síntomas</a>
   </div>
@@ -132,6 +133,32 @@
             </div>
         </div>
     </div>
+
+    
+<!-- POPUP DETALLE USANDO EL MISMO detalle.html -->
+    <div id="popupModal" class="modal-overlay" onclick="cerrarSiClicAfuera(event)">
+  <div class="modal-content">
+    <span class="modal-close" onclick="cerrarModal()">✖</span>
+    <iframe id="detalleIframe" style="width:100%; height:100%; border:none;"></iframe>
+  </div>
+</div>
+
+<script>
+function abrirDetallePopup(id) {
+  const iframe = document.getElementById("detalleIframe");
+  iframe.src = `/detalle?id=${id}`; //  detalle.html
+  document.getElementById("popupModal").style.display = "flex";
+}
+
+function cerrarModal() {
+  document.getElementById("popupModal").style.display = "none";
+  document.getElementById("detalleIframe").src = "";
+}
+</script>
+
+<!-- POPUP DETALLE USANDO EL MISMO detalle.html -->
+
+
     <script src="/js/Accordion.js"></script>
     <script src="/js/Tarjetas.js"></script>
 </body>

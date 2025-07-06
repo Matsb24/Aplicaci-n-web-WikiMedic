@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class VistaController {
 
 
+    @GetMapping({"","/"})
+    public String home(){
+        return "Index";
+    }
+    
     //moverse a buscar afecciones
     @GetMapping("/buscar-afecciones")
     public String buscarAfecciones() {
@@ -19,4 +24,12 @@ public class VistaController {
         return "BuscarNombre"; //colocar nombre del html, sin html. ejemplo BuscarMedicinas.html -> BuscarMedicinas
     }
 
+    @GetMapping("/detalle")
+public String detalleMedicina() {
+    return "DetalleMedicina"; // plantilla DetalleMedicina.html
 }
+
+}
+
+
+

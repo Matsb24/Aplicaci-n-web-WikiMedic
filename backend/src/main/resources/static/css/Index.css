@@ -1,0 +1,115 @@
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 36px;
+    }
+
+    .logo span {
+      font-size: 1.6em;
+      font-weight: 700;
+      color: #0ab6fb;
+    }
+
+    .section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 10%;
+      flex-wrap: wrap;
+    }
+
+    .text-content {
+      flex: 1;
+      min-width: 280px;
+      max-width: 550px;
+    }
+
+    .text-content h2 {
+      color: #0ab6fb;
+      font-size: 1.5em;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .text-content p {
+      font-size: 1.05em;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #444;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      background-color: #0ab6fb;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background-color 0.2s;
+    }
+
+    .buttons a:hover {
+      background-color: #089fd8;
+    }
+
+    .img-content {
+      flex: 1;
+      min-width: 280px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .img-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+/* Hero principal */
+    
+
+    /* Pie de página simple */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #888;
+      font-size: 0.9em;
+      background-color: #f9f9f9;
+    }
+
+

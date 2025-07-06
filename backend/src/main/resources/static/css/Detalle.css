@@ -1,0 +1,75 @@
+    body {
+      font-family: 'Segoe UI', 'Roboto', sans-serif;
+      margin: 0;
+      background: #f0f4f8;
+      color: #333;
+      padding: 40px 20px;
+     
+      
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 16px;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      margin: 0 auto; /* ✅ esto centra horizontalmente */
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    h1 {
+      color: #007acc;
+      font-size: 2em;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin: 12px 0;
+      line-height: 1.6;
+    }
+
+    strong {
+      color: #007acc;
+      font-weight: 600;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 25px;
+      color: #007acc;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Botón de cierre si se usa en modal */
+    .btn-cerrar {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 1.5em;
+      color: #999;
+      cursor: pointer;
+    }
+
+    .btn-cerrar:hover {
+      color: #e74c3c;
+    }
+
+    .wrapper {
+      position: relative;
+    }

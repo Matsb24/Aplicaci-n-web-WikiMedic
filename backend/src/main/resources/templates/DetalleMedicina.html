@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+     <title>Detalle Medicamento</title>
+   <link rel="stylesheet" href="/css/Detalle.css">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+</head>
+
+
+<body>
+  <div class="container">
+    <h1 id="nombre">Cargando...</h1>
+    <p><strong>Descripción:</strong> <span id="descripcion"></span></p>
+    <p><strong>Componentes:</strong> <span id="componentes"></span></p>
+    <p><strong>Advertencias:</strong> <span id="advertencias"></span></p>
+    <p><strong>Consecuencias:</strong> <span id="consecuencias"></span></p>
+    
+    
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    if (!id) {
+      document.body.innerHTML = "<p style='color:red;'>No se especificó ID en la URL</p>";
+    } else {
+      fetch(`/api/medicinas/${id}`)
+        .then(res => {
+          if (!res.ok) throw new Error("No se encontró el medicamento");
+          return res.json();
+        })
+        .then(medicina => {
+          document.getElementById("nombre").textContent = medicina.nombre;
+          document.getElementById("descripcion").textContent = medicina.descripcion || "No disponible";
+          document.getElementById("componentes").textContent = medicina.componentes || "No disponible";
+          document.getElementById("advertencias").textContent = medicina.advertencias || "No disponible";
+          document.getElementById("consecuencias").textContent = medicina.consecuencias || "No disponible";
+          
+        })
+        .catch(err => {
+          document.body.innerHTML = `<p style="color:red">Error cargando medicamento: ${err.message}</p>`;
+        });
+    }
+  </script>
+</body>
+</html>

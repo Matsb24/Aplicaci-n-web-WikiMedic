@@ -5,11 +5,26 @@ body {
     padding: 0;
 }
 
+.body {
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+    margin: 0; padding: 0;
+    background: #f6f6f6;
+}
+
+:root {
+    --color-principal: #0ab6fb;
+    --color-secundario: #e6f7ff;
+    --color-gris-suave: #f6f6f6;
+    --color-texto: #383838;
+    --color-sombra: rgba(0, 0, 0, 0.05);
+    --color-hover: #dff5ff;
+}
+
 .nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 40px;
+    padding: 20px 30px;
     background: #fff;
     border-bottom: 1px solid #eee;
 }
@@ -37,25 +52,87 @@ body {
     gap: 60px;
 }
 
-.nav-link {
+.nav-logo {
+    height: 62px;
+    margin: 0 68px;
+}
+
+.nav-link, .nav-home {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+
+.nav-home {
+    font-size: 1.05em;
+    font-weight: 600;
+    color: var(--color-principal);
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border: 2px solid var(--color-principal);
+    border-radius: 30px;
     text-decoration: none;
-    color: #888;
+    box-shadow: 0 2px 6px rgba(0, 180, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.nav-home:hover {
+    background-color: var(--color-principal);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 180, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+
+.nav-link {
+    position: relative;
+    text-decoration: none;
+    color: #555;
     font-weight: 600;
     font-size: 1.1em;
-    padding-bottom: 4px;
-    border-bottom: 3px solid transparent;
-    transition: color 0.2s, border 0.2s;
+    padding-bottom: 6px;
+    transition: color 0.3s ease;
 }
 
+/* Efecto de rayita (subrayado) animado */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: var(--color-principal); /* azul profesional */
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    border-radius: 3px;
+    opacity: 0.8;
+}
+
+/* Cuando pasas el mouse, aparece la rayita */
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Rayita visible permanente en pestaña activa */
+.nav-link.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Color del texto también cambia en pestaña activa */
 .nav-link.active {
-    color: #0ab6fb;
-    border-bottom: 3px solid #0ab6fb;
+    color: var(--color-principal);
 }
 
-.nav-logo {
-    height: 42px;
-    margin: 0 28px;
-}
+
+
+
+
+
+
 
 .main-content {
     display: flex;
@@ -176,5 +253,77 @@ body {
     color: #0ab6fb;
 }
 
+/*/////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*POPUP DETALLE MEDICAMENTO*/
+.modal-overlay {
+  display: none;
+justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  padding: 50px;
+  box-sizing: border-box;
+}
+.modal-content {
+  background-color: #ffffff;
+  border-radius: 16px;
+width: 100%;
+max-width: 900px; /* o el ancho que desees, pero realista */
+height: 80%;
+  max-width: 3000px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 50px 60px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  position: relative;
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeIn 0.3s ease-in-out;
+  box-sizing: border-box;
+}
+.modal-close {
+ position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 24px;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+#detalleIframe {
+  width: 100%;
+  height: auto;
+  border: none;
+  display: block;
+}
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+    max-height: 85vh;
+  }
+}
 
+/* Animación opcional */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
 
+@media screen and (max-width: 480px) {
+  .modal-content {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+  }
+}
+    .modal-close {
+        top: 15px;
+        right: 15px;
+        font-size: 20px;
+    }
+/*/////////////////////////////////////////////////////////////////////////////////////////////////*/

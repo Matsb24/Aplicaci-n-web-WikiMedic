@@ -23,8 +23,9 @@ function cargarMedicinas() {
                 const card = document.createElement('div');
                 card.className = 'farmaco-card';
 
-                // Redirige a la pantalla de detalle al hacer click en la tarjeta
-                card.onclick = () => window.location.href = `/farmaco/${medicina.id}`;
+               // card.onclick = () => window.location.href = `/detalle?id=${medicina.id}`;
+
+                card.onclick = () => abrirDetallePopup(medicina.id);
 
                 // Estructura de la tarjeta: nombre y descripción
                 card.innerHTML = `

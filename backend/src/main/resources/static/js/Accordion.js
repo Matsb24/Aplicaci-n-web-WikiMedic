@@ -26,7 +26,7 @@ function renderizarTarjetasMedicinas(medicinas) {
     medicinas.forEach(medicina => {
         const card = document.createElement('div');
         card.className = 'farmaco-card';
-        card.onclick = () => window.location.href = `/farmaco/${medicina.id}`;
+        card.onclick = () => abrirDetallePopup(medicina.id);
         card.innerHTML = `
             <div class="nombre">${medicina.nombre}</div>
             <div class="desc">${medicina.descripcion ?? 'Sin descripción.'}</div>

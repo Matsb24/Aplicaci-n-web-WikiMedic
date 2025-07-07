@@ -115,7 +115,7 @@ function cerrarModal() {
                 cards.innerHTML = '';
                 const card = document.createElement('div');
                 card.className = 'farmaco-card';
-                card.onclick = () => window.location.href = `/farmaco/${medicina.id}`;
+                card.onclick = () => abrirDetallePopup(medicina.id);
                 card.innerHTML = `
                     <h3>${medicina.nombre}</h3>
                     <p>${medicina.descripcion ? medicina.descripcion : ''}</p>

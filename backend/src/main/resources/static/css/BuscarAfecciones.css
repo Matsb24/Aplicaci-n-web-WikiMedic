@@ -259,6 +259,7 @@ body {
 
 .farmaco-card {
     background: #fff;
+    transition: background 0.3s ease; /* Suaviza la transición al cambiar de color <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     border-radius: 16px;
     box-shadow: 0 2px 12px 0 rgba(0,0,0,0.06);
     padding: 24px 38px;
@@ -272,6 +273,7 @@ body {
 }
 
 .farmaco-card:hover {
+    background: #e6f7ff;/* Color sutil al pasar el mouse<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
     box-shadow: 0 6px 24px 0 rgba(0,180,255,0.15);
     transform: translateY(-5px);
 }

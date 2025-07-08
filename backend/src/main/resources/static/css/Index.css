@@ -103,13 +103,60 @@
 /* Hero principal */
     
 
-    /* Pie de página simple */
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #888;
-      font-size: 0.9em;
-      background-color: #f9f9f9;
-    }
+.floating-message {
+    position: fixed;
+    bottom: 20px; /* un poco más arriba para dejar espacio del borde */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 900px;
+    background-color: #0ab6fb;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95em;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    z-index: 9999;
+}
 
 
+.floating-message p {
+    margin: 0;
+    flex: 1;
+    padding-right: 10px;
+}
+
+.floating-message button {
+    background-color: white;
+    color: #0ab6fb;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.floating-message button:hover {
+    background-color: #e1f5fe;
+}
+
+
+/* Pie de página simple */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    color: #888;
+    font-size: 0.9em;
+    background-color: #f9f9f9;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+}

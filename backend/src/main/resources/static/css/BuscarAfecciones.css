@@ -213,13 +213,21 @@ body {
 .accordion-title:hover {
     background: #e1f4fd;
 }
+
+
+/*>>>>>>>>>>>>>>>>>CAMBIO REALIZADO AL ACORDEON PARA UN DESPLIEGUE MÁS SUAVE<<<<<<<<<<<<<<<<<<<<*/
 .accordion-content {
-    padding: 8px 24px 12px 24px;
-    display: none;
+    max-height: 0; 
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 24px;
 }
 .accordion-content.active {
-    display: block;
+    max-height: 300px;
+    padding: 8px 24px;
 }
+/*-------------------------------------------------------------------------------------------*/
+
 .checkbox-list label {
     display: block;
     margin-bottom: 8px;
@@ -284,7 +292,7 @@ body {
 }
 .farmaco-card .desc {
     color: #666;
-    font-size: 1.0em;
+    font-size: 0.9em;
     text-align: left;
     margin-bottom: 0;
     margin-left: 28px;

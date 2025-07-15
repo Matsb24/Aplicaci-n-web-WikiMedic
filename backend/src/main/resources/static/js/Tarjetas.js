@@ -1,45 +1,41 @@
-/**
- * Abre o cierra el acordeón de categorías.
- * @param {HTMLElement} button - Botón que dispara el acordeón.
- */
-function toggleAccordion(button) {
-    const content = button.nextElementSibling;
-    content.classList.toggle('active');
+// Renderiza las tarjetas de medicamentos
+function renderizarTarjetasMedicinas(medicinas) {
+    const contenedor = document.getElementById('farmacos-cards');
+    contenedor.innerHTML = '';
+
+    if (!medicinas || medicinas.length === 0) {
+        contenedor.innerHTML = '<p>No se encontraron medicamentos.</p>';
+        return;
+    }
+
+    medicinas.forEach(medicina => {
+        const card = document.createElement('div');
+        card.className = 'farmaco-card';
+        card.onclick = () => abrirDetallePopup(medicina.id);
+
+        const imagenUrl = `/img/medicamentos/${medicina.id}.jpg`;
+
+        card.innerHTML = `
+            <img src="${imagenUrl}" alt="Imagen de ${medicina.nombre}" class="farmaco-img" />
+            <div class="nombre">${medicina.nombre}</div>
+            <div class="desc">${medicina.descripcion ?? 'Sin descripción.'}</div>
+        `;
+
+        contenedor.appendChild(card);
+    });
 }
 
-/**
- * Carga las medicinas desde el backend y renderiza las tarjetas en el contenedor.
- * Cada tarjeta incluye nombre y descripción. 
- * Al hacer clic en una tarjeta, redirige a la pantalla de detalle de ese medicamento.
- */
-function cargarMedicinas() {
+// Cargar todas las medicinas o un listado filtrado
+function cargarMedicinas(medicinas = null) {
+    if (medicinas) {
+        renderizarTarjetasMedicinas(medicinas);
+        return;
+    }
     fetch('/api/medicinas')
         .then(response => response.json())
-        .then(medicinas => {
-            const contenedor = document.getElementById('farmacos-cards');
-            contenedor.innerHTML = ''; // Limpiar el contenedor antes de renderizar
-            medicinas.forEach(medicina => {
-                // Crear la tarjeta de medicina
-                const card = document.createElement('div');
-                card.className = 'farmaco-card';
-
-               // card.onclick = () => window.location.href = `/detalle?id=${medicina.id}`;
-
-                card.onclick = () => abrirDetallePopup(medicina.id);
-
-                // Estructura de la tarjeta: nombre y descripción
-                card.innerHTML = `
-                    <div class="nombre">${medicina.nombre}</div>
-                    <div class="desc">${medicina.descripcion ?? 'Sin descripción.'}</div>
-                `;
-                contenedor.appendChild(card);
-            });
-        })
-        .catch(err => {
-            console.error('Error cargando medicinas:', err);
-        });
+        .then(data => renderizarTarjetasMedicinas(data));
 }
 
-// Ejecuta cargarMedicinas cuando el DOM esté listo.
-// Es importante para que el contenedor exista antes de intentar llenarlo.
-document.addEventListener('DOMContentLoaded', cargarMedicinas);
+document.addEventListener('DOMContentLoaded', () => {
+    cargarMedicinas();
+});

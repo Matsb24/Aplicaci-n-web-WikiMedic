@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <title>Buscador de Medicinas por Nombre</title>
     <link rel="stylesheet" href="/css/BuscarNombre.css">
+    <link rel="stylesheet" href="/css/chatboot.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
     <link rel="icon" href="/img/logo.png" type="image/x-icon">
+    
 </head>
 <body>
+    <!-- NAVBAR SUPERIOR -->
     <div class="nav">
         <a href="/" class="nav-home">Inicio</a>
         <div class="nav-center">
@@ -16,57 +19,78 @@
             <a href="/buscar-afecciones" class="nav-link">Síntomas</a>
         </div>
     </div>
+
+    <!-- CONTENEDOR GENERAL DE BUSCADOR + CHATBOT -->
     <div class="main-content">
-        <!-- Buscador por nombre -->
-        <div class="search-container">
-            <input type="text" id="medicina-search" placeholder="Buscar medicina por nombre..." autocomplete="off">
-            <div id="suggestions" class="suggestions-list"></div>
+        <!-- BUSCADOR (COLUMNA IZQUIERDA) -->
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" id="medicina-search" placeholder="Buscar medicina por nombre..." autocomplete="off">
+                <div id="suggestions" class="suggestions-list"></div>
+            </div>
+
+            <div class="farmacos-zone">
+                <div class="farmacos-header">BÚSQUEDAS ENCONTRADAS</div>
+                <div class="farmacos-cards" id="farmacos-cards">
+                    <div id="mensaje-inicial">Coloque el nombre del medicamento</div>
+                </div>
+            </div>
         </div>
-        <!-- Zona de resultados de fármacos -->
-        <div class="farmacos-zone">
-            <div class="farmacos-header">BÚSQUEDAS ENCONTRADAS</div>
-            <div class="farmacos-cards" id="farmacos-cards">
-                <div id="mensaje-inicial">Coloque el nombre del medicamento</div>
+
+        <!-- CHATBOT (COLUMNA DERECHA) -->
+        <div class="chatbot-section">
+            <div class="chatbot-header">
+                <img src="/img/chatbot.png" alt="Icono Chatbot">
+                <h2>¿En qué podemos ayudarte?</h2>
+            </div>
+            
+            <div id="chatbot-container">
+                <div id="chat-window">
+                    <div id="chat-log"></div>
+                </div>           
             </div>
         </div>
     </div>
 
-
-
-
-    <!-- POPUP DETALLE USANDO EL MISMO detalle.html -->
+    <!-- MODAL PARA DETALLE DE MEDICAMENTO -->
     <div id="popupModal" class="modal-overlay" onclick="cerrarSiClicAfuera(event)">
-  <div class="modal-content">
-    <span class="modal-close" onclick="cerrarModal()">✖</span>
-    <iframe id="detalleIframe" style="width:100%; height:100%; border:none;"></iframe>
-  </div>
-</div>
+        <div class="modal-content">
+            <span class="modal-close" onclick="cerrarModal()">✖</span>
+            <iframe id="detalleIframe" style="width:100%; height:100%; border:none;"></iframe>
+        </div>
+    </div>
 
-<script>
-function abrirDetallePopup(id) {
-  const iframe = document.getElementById("detalleIframe");
-  iframe.src = `/detalle?id=${id}`; //  detalle.html
-  document.getElementById("popupModal").style.display = "flex";
-}
+    <!-- FUNCIONES JS DETALLE -->
+    <script>
+        function abrirDetallePopup(id) {
+            const iframe = document.getElementById("detalleIframe");
+            iframe.src = `/detalle?id=${id}`;
+            document.getElementById("popupModal").style.display = "flex";
+        }
 
-function cerrarModal() {
-  document.getElementById("popupModal").style.display = "none";
-  document.getElementById("detalleIframe").src = "";
-}
-</script>
+        function cerrarModal() {
+            document.getElementById("popupModal").style.display = "none";
+            document.getElementById("detalleIframe").src = "";
+        }
 
-<!-- POPUP DETALLE USANDO EL MISMO detalle.html -->
+        function cerrarSiClicAfuera(event) {
+            if (event.target.classList.contains("modal-overlay")) {
+                cerrarModal();
+            }
+        }
+    </script>
+
+    <!-- FUNCIONES JS BUSCADOR -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const searchInput = document.getElementById('medicina-search');
             const suggestionsBox = document.getElementById('suggestions');
             const cards = document.getElementById('farmacos-cards');
+            let timeout = null;
 
             function limpiarResultados() {
                 cards.innerHTML = '<div id="mensaje-inicial" style="text-align:center;color:#888;">Coloque el nombre del medicamento</div>';
             }
-
-            let timeout = null;
 
             searchInput.addEventListener('input', function () {
                 const query = searchInput.value.trim();
@@ -84,11 +108,13 @@ function cerrarModal() {
                         .then(res => res.json())
                         .then(data => {
                             suggestionsBox.innerHTML = '';
+
                             if (data.length === 0) {
                                 suggestionsBox.style.display = 'none';
                                 cards.innerHTML = '<div style="text-align:center;color:#888;">0 resultados</div>';
                                 return;
                             }
+
                             data.forEach(medicina => {
                                 const item = document.createElement('div');
                                 item.className = 'suggestion-item';
@@ -100,6 +126,7 @@ function cerrarModal() {
                                 });
                                 suggestionsBox.appendChild(item);
                             });
+
                             suggestionsBox.style.display = 'block';
                         });
                 }, 300);
@@ -126,15 +153,8 @@ function cerrarModal() {
             limpiarResultados();
         });
     </script>
-    
-    
 
-
-
-
-
-
-
-</div>
+    <!-- CHATBOT SCRIPT -->
+    <script src="/js/chatboot.js"></script>
 </body>
 </html>

@@ -38,6 +38,16 @@
           document.getElementById("advertencias").textContent = medicina.advertencias || "No disponible";
           document.getElementById("consecuencias").textContent = medicina.consecuencias || "No disponible";
           
+          // Crear imagen
+          const img = document.createElement("img");
+          img.src = `/img/medicamentos/${id}.jpg`;
+          img.alt = `Imagen del medicamento ${medicina.nombre}`;
+          img.style.maxWidth = "300px";
+          img.style.borderRadius = "10px";
+          img.style.margin = "20px 0";
+
+          // Insertarla al inicio del contenedor
+          document.querySelector(".container").insertBefore(img, document.getElementById("descripcion").parentElement);
         })
         .catch(err => {
           document.body.innerHTML = `<p style="color:red">Error cargando medicamento: ${err.message}</p>`;

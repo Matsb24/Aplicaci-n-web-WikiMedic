@@ -37,12 +37,30 @@
       <img src="img/doctora.png" alt="Doctora en laptop">
     </div>
   </section>
-  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>
 
   <!-- Footer -->
   <footer>
     © 2025 WikiMedic. Todos los derechos reservados.
   </footer>
+
+  <!-- Mensaje flotante -->
+<div class="floating-message" id="infoMessage">
+    <p>
+        La información presentada en esta página es únicamente con fines informativos y educativos. No debe considerarse un sustituto de una consulta médica profesional, diagnóstico o tratamiento.
+    </p>
+    <button onclick="dismissMessage()">Aceptar</button>
+</div>
+
+<script>
+    function dismissMessage() {
+        const msg = document.getElementById("infoMessage");
+        msg.style.transform = "translateY(100%)";
+        msg.style.opacity = "0";
+        setTimeout(() => msg.style.display = "none", 500); // oculta completamente después de la animación
+    }
+</script>
+
+
 </body>
 </html>
 </body>

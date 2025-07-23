@@ -63,10 +63,54 @@
     <!-- FUNCIONES JS DETALLE -->
     <script>
         function abrirDetallePopup(id) {
-            const iframe = document.getElementById("detalleIframe");
-            iframe.src = `/detalle?id=${id}`;
-            document.getElementById("popupModal").style.display = "flex";
-        }
+  const iframe = document.getElementById("detalleIframe");
+  iframe.src = `/detalle?id=${id}`;
+  document.getElementById("popupModal").style.display = "flex";
+
+  iframe.onload = function () {
+    try {
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+
+      const estilo = `
+        <style>
+          body {
+            text-align: center !important;
+            font-family: 'Montserrat', sans-serif;
+          }
+
+          h1, h2, h3, h4, h5, h6 {
+            text-align: center !important;
+            font-size: 28px !important;
+            margin-bottom: 20px;
+            color: #007bff;
+          }
+
+          img {
+            display: block !important;
+            margin: 0 auto 24px auto !important;
+            max-width: 300px !important;
+            max-height: 260px !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+          }
+
+          p {
+            text-align: justify;
+            margin: 0 auto;
+            max-width: 700px;
+          }
+        </style>
+      `;
+
+      const head = doc.head || doc.getElementsByTagName("head")[0];
+      head.insertAdjacentHTML("beforeend", estilo);
+    } catch (e) {
+      console.error("No se pudo inyectar el estilo al iframe:", e);
+    }
+  };
+}
+
 
         function cerrarModal() {
             document.getElementById("popupModal").style.display = "none";

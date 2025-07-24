@@ -16,9 +16,11 @@ function renderizarTarjetasMedicinas(medicinas) {
         const imagenUrl = `/img/medicamentos/${medicina.id}.jpg`;
 
         card.innerHTML = `
-            <img src="${imagenUrl}" alt="Imagen de ${medicina.nombre}" class="farmaco-img" />
             <div class="nombre">${medicina.nombre}</div>
-            <div class="desc">${medicina.descripcion ?? 'Sin descripción.'}</div>
+            <div class="contenido-horizontal">
+                <img src="${imagenUrl}" alt="Imagen de ${medicina.nombre}" class="farmaco-img" />
+                <div class="desc">${medicina.descripcion ?? 'Sin descripción.'}</div>
+            </div>
         `;
 
         contenedor.appendChild(card);
